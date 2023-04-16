@@ -115,14 +115,14 @@ module Brent_Kung_Approx(input [16:1] A, [16:1] B, input Carry_in, output [16:0]
   assign Carry_Out[6]= G[1][6];
   assign Carry_Out[7]= G[1][7];
   assign Carry_Out[8]= G[1][8];
-  assign Carry_Out[9]= (Carry_Out[6]&P[1][9])|G[1][9];
-  assign Carry_Out[10]= (Carry_Out[6]&P[2][10])|G[2][10];
-  assign Carry_Out[11]= (Carry_Out[6]&P[2][11])|G[2][11];
-  assign Carry_Out[12]= (Carry_Out[6]&P[3][12])|G[3][12];
-  assign Carry_Out[13]= (Carry_Out[6]&P[2][13])|G[2][13];
-  assign Carry_Out[14]= (Carry_Out[6]&P[2][14])|G[2][14];
-  assign Carry_Out[15]= (Carry_Out[6]&P[2][15])|G[2][15];
-  assign Carry_Out[16]= (Carry_Out[6]&P[4][16])|G[4][16];
+  assign Carry_Out[9]= (Carry_Out[8]&P[1][9])|G[1][9];
+  assign Carry_Out[10]= (Carry_Out[8]&P[2][10])|G[2][10];
+  assign Carry_Out[11]= (Carry_Out[8]&P[2][11])|G[2][11];
+  assign Carry_Out[12]= (Carry_Out[8]&P[3][12])|G[3][12];
+  assign Carry_Out[13]= (Carry_Out[8]&P[2][13])|G[2][13];
+  assign Carry_Out[14]= (Carry_Out[8]&P[2][14])|G[2][14];
+  assign Carry_Out[15]= (Carry_Out[8]&P[2][15])|G[2][15];
+  assign Carry_Out[16]= (Carry_Out[8]&P[4][16])|G[4][16];
   
   
   

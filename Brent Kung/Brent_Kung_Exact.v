@@ -3,7 +3,7 @@ module Genration(input A,B,C,D,output X,Y);
   assign Y=C|(A&D);
 endmodule
 
-module Brent_kung(input [16:1] A, [16:1] B, input Carry_in, output [16:0] Carry_Out,output [16:1] Sum);
+module Brent_kung(input [16:1] A, [16:1] B, input Carry_in, output [16:0] Carry_Out,output [17:1] Sum);
   wire P[5:1][16:1];
   wire G[5:1][16:1];
   assign P[1][1]=A[1]^B[1];
@@ -55,10 +55,10 @@ module Brent_kung(input [16:1] A, [16:1] B, input Carry_in, output [16:0] Carry_
   Genration g9  (P[1][3],P[2][2],G[1][3],G[2][2],P[2][3],G[2][3]);
   Genration g10 (P[1][5],P[3][4],G[1][5],G[3][4],P[2][5],G[2][5]);
   Genration g11 (P[2][6],P[3][4],G[2][6],G[3][4],P[3][6],G[3][6]);
-  Genration g12 (P[1][7],P[3][6],G[2][7],G[3][6],P[2][7],G[2][7]);
+  Genration g12 (P[1][7],P[3][6],G[1][7],G[3][6],P[2][7],G[2][7]);
   Genration g13 (P[2][8],P[2][6],G[2][8],G[2][6],P[3][8],G[3][8]);
   Genration g14 (P[3][8],P[3][4],G[3][8],G[3][4],P[4][8],G[4][8]);
-  Genration g15 (P[1][9],P[4][8],G[1][7],G[4][8],P[2][9],G[2][9]);
+  Genration g15 (P[1][9],P[4][8],G[1][9],G[4][8],P[2][9],G[2][9]);
   Genration g16 (P[2][10],P[4][8],G[2][10],G[4][8],P[3][10],G[3][10]);
   Genration g17 (P[1][11],P[3][10],G[1][11],G[3][10],P[2][11],G[2][11]);
   Genration g18 (P[2][12],P[2][10],G[2][12],G[2][10],P[3][12],G[3][12]);
@@ -67,7 +67,7 @@ module Brent_kung(input [16:1] A, [16:1] B, input Carry_in, output [16:0] Carry_
   Genration g21 (P[2][14],P[4][12],G[2][14],G[4][12],P[3][14],G[3][14]);
   Genration g22 (P[1][15],P[3][14],G[1][15],G[3][14],P[2][15],G[2][15]);
   Genration g23 (P[2][16],P[2][14],G[2][16],G[2][14],P[3][16],G[3][16]);
-  Genration g24 (P[3][16],P[3][12],G[3][16],G[3][12],P[4][16],G[4][12]);
+  Genration g24 (P[3][16],P[3][12],G[3][16],G[3][12],P[4][16],G[4][16]);
   Genration g25 (P[4][16],P[4][8],G[4][16],G[4][8],P[5][16],G[5][16]);
   //Genration g24 (P[1][3],P[1][2],G[1][3],G[1][2],P[5][3],G[5][3]);
   //Genration g25 (P[2][4],P[1][2],G[2][4],G[1][2],P[5][4],G[5][4]);
@@ -85,10 +85,10 @@ module Brent_kung(input [16:1] A, [16:1] B, input Carry_in, output [16:0] Carry_
   //Genration g37 (P[4][16],P[1][2],G[4][16],G[1][2],P[5][16],G[5][16]);
   
   assign Carry_Out[0]=Carry_in;  
-  assign Carry_Out[1]= (Carry_in&P[2][2])|G[2][2];
-  assign Carry_Out[2]= (Carry_in&P[2][3])|G[2][3];
-  assign Carry_Out[3]= (Carry_in&P[3][4])|G[3][4];
-  assign Carry_Out[4]= (Carry_Out[2]&P[2][4])|G[2][4];
+  assign Carry_Out[1]= (Carry_in&P[1][1])|G[1][1];
+  assign Carry_Out[2]= (Carry_in&P[2][2])|G[2][2];
+  assign Carry_Out[3]= (Carry_in&P[2][3])|G[2][3];
+  assign Carry_Out[4]= (Carry_in&P[3][4])|G[3][4];
   assign Carry_Out[5]= (Carry_in&P[2][5])|G[2][5];
   assign Carry_Out[6]= (Carry_in&P[3][6])|G[3][6];
   assign Carry_Out[7]= (Carry_in&P[2][7])|G[2][7];
@@ -121,5 +121,6 @@ module Brent_kung(input [16:1] A, [16:1] B, input Carry_in, output [16:0] Carry_
   assign Sum[14]= Carry_Out[13]^P[1][14];
   assign Sum[15]= Carry_Out[14]^P[1][15];
   assign Sum[16]= Carry_Out[15]^P[1][16];
+  assign Sum[17] = Carry_Out[16];
   
 endmodule
